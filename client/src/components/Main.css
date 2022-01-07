@@ -1,0 +1,13 @@
+.containerHero {
+    display: flex;
+    background-image: url("../../public/assets/img/robots.jpeg");
+    background-size: cover;
+    background-position-y: center;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    margin-bottom: 5rem;
+    height: 25rem;
+    width: 100%;
+}
+
