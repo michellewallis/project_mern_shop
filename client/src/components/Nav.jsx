@@ -5,7 +5,7 @@ const Nav = () => {
         <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
             <div className="container-fluid">
                 <a className="navbar-brand" href="#">
-                    Rockbotic 
+                    Robtic 
                 </a>
                 <button
                     className="navbar-toggler"
@@ -29,11 +29,7 @@ const Nav = () => {
                                 </span>
                             </a>
                         </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="#">
-                                Productos
-                            </a>
-                        </li>
+                        
                         <li className="nav-item">
                             <a className="nav-link" href="#">
                                 Sobre nosotros

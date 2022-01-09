@@ -1,14 +1,17 @@
-import React from 'react'
+import React from "react";
+import CardProduct from "./CardProduct";
+import "./Products.css";
 
+const Products = ({ productosArray }) => {
+    // funcion que pinta productos//
+    // Paint products list function
+    const paintProducts = () => {
+        return productosArray.map(producto => (
+            <CardProduct key={producto._id} producto={producto} />
+        ));
+    };
 
-const products = () => {
-    return (
-        <section>
+    return <div className="gridContainer">{paintProducts()}</div>;
+};
 
-            <h2 className='text-center'> Nuestros productos</h2>
-        </section>
-        
-    )
-}
-
-export default products
+export default Products;

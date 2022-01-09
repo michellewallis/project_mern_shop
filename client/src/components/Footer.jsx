@@ -1,11 +1,15 @@
-import React from 'react'
+import React from "react";
 
 const Footer = () => {
     return (
         <div>
-            <h3>hola soy el pie</h3>
+            <tr class="table-primary">
+                <th scope="row">Hecho por Michelle Wallis</th>
+                
+                
+            </tr>
         </div>
-    )
-}
+    );
+};
 
-export default Footer
+export default Footer;
