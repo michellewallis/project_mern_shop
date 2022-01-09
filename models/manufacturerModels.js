@@ -1,7 +1,7 @@
 //modules
 const mongoose = require('mongoose');
 
-// SCHEMA MONGOOSE
+// ESQUEMA MONGOOSE
 const manufacturerSchema = new mongoose.Schema({
     name: {
       type: String,
@@ -21,8 +21,8 @@ const manufacturerSchema = new mongoose.Schema({
 
 });
 
-//mongoose model
+//mongoose modelo
 const Manufacturer = mongoose.model('Manufacturer',manufacturerSchema);
 
-//export model
+//export modelo
 module.exports = Manufacturer;

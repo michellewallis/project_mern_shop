@@ -2,7 +2,7 @@
 const express = require("express");
 const productControllers = require("../controllers/productControllers");
 
-const router = express.Router(); //method for create
+const router = express.Router(); //metodo para crear rutas
 //routes
 router
   .route("/")
@@ -15,6 +15,6 @@ router
   .patch(productControllers.updateProduct)
   .delete(productControllers.deleteProduct);
 
-//export router
+//exportar router
 
 module.exports = router;

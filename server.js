@@ -4,7 +4,7 @@ dotenv.config({ path: "./.env" });
 
 const app = require("./app");
 
-//MongoDB CONECTION
+//MongoDB CONEXION
 const DB = process.env.DATABASE;
 mongoose
     .connect(DB, {
@@ -13,7 +13,7 @@ mongoose
     })
     .then(() => console.log("DB Conection successfull!"));
 
-// SERVER
+// SERVIDOR
 const port = 5000;
 app.listen(port, () => {
     console.log(`Shop-Api running on port ${port}`);

@@ -1,28 +1,28 @@
-//modules
+//modulos
 const Product = require("../models/productModel");
 const Manufactures = require("../models/manufacturerModels");
-// controllers
+// controladores
 
-//get all products function
+//funcion obtener todos los productos
 exports.getAllProducts = async (req, res) => {
     try {
-        // build a query
-        //filtering
-        const queryObj = { ...req.query }; // spread create a copy of this array
+        // hacer query
+        //filtrado
+        const queryObj = { ...req.query }; // spread crea copia del array
         const excludedFields = ["page", "sort", "limit"];
 
         excludedFields.forEach(el => delete queryObj[el]); // foreach eliminate the field of the obj that have this coincidence
 
-        // filtering
-        let queryStr = JSON.stringify(queryObj); // change the obj to string
+        // filtrado
+        let queryStr = JSON.stringify(queryObj); // cambia el objeto a string
         queryStr = queryStr.replace(
             /\b(gte|gt|lte|lt)\b/g,
             match => `$${match}`
-        ); // here the regex set a dollar sign
+        ); // uso de  regex cambiar a simbolo $
 
         let query = Product.find(JSON.parse(queryStr));
 
-        //second function sorting
+        //segunda funcion sorting
         if (req.query.sort) {
             const sortBy = req.query.sort.split(",").join(" ");
 
@@ -30,10 +30,10 @@ exports.getAllProducts = async (req, res) => {
         } else {
             query = query.sort("name");
         }
-        //3. pagination
-        const page = req.query.page * 1 || 1; // create page with the limit
-        const limit = req.query.limit * 1 || 10; // quantity unids per page
-        const skip = (page - 1) * limit; // here it create page and limit
+        //3. paginacion
+        const page = req.query.page * 1 || 1; // crear el limite de pagina
+        const limit = req.query.limit * 1 || 10; // unidades por pagina
+        const skip = (page - 1) * limit; // crear pagina y su limite
 
         query = query.skip(skip).limit(limit);
 
@@ -42,7 +42,7 @@ exports.getAllProducts = async (req, res) => {
             if (skip >= numProducts) throw new Error("This page doesnt exit");
         }
 
-        //execute query
+        //ejecutamos la query
         const products = await query.populate("manufacturer");
 
         res.status(200).json({
@@ -57,7 +57,7 @@ exports.getAllProducts = async (req, res) => {
         });
     }
 };
-//create product function
+//funcion para crear producto
 exports.createProduct = async (req, res) => {
     try {
         const newProduct = await Product.create(req.body);
@@ -72,7 +72,7 @@ exports.createProduct = async (req, res) => {
         });
     }
 };
-//get product by id
+// obtener producto por id
 exports.getProduct = async (req, res) => {
     try {
         const product = await Product.findById(req.params.id);
@@ -87,7 +87,7 @@ exports.getProduct = async (req, res) => {
         });
     }
 };
-//UPDATE one product by id
+//actualizar producto por id
 exports.updateProduct = async (req, res) => {
     try {
         const Product = await Product.findByIdAndUpdate(
@@ -110,7 +110,7 @@ exports.updateProduct = async (req, res) => {
     }
 };
 
-//DELETE one product by id
+//borrar producto por id
 exports.deleteProduct = async (req, res) => {
     try {
         await Product.findByIdAndDelete(req.params.id);
